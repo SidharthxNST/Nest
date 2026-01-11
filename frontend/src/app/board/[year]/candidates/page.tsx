@@ -362,7 +362,9 @@ const BoardCandidatesPage = () => {
               </div>
             </div>
             {snapshot.contributionHeatmapData &&
-              Object.keys(snapshot.contributionHeatmapData).length > 0 && (
+              Object.values(snapshot.contributionHeatmapData).some(
+              (count) => count > 0
+              ) && (
                 <div className="mt-3">
                   <ContributionHeatmap
                     contributionData={snapshot.contributionHeatmapData}
@@ -537,7 +539,9 @@ const BoardCandidatesPage = () => {
 
         {/* Slack Communications Heatmap */}
         {snapshot?.communicationHeatmapData &&
-          Object.keys(snapshot.communicationHeatmapData).length > 0 && (
+          Object.values(snapshot.communicationHeatmapData).some(
+          (count) => count > 0
+            ) && (
             <div className="mt-4 w-full border-t border-gray-200 pt-4 dark:border-gray-700">
               <ContributionHeatmap
                 contributionData={snapshot.communicationHeatmapData}
